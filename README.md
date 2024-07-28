@@ -2,7 +2,7 @@
 
 ### Instalación
 
-1. HAcew falta agregar las variables de entorno (.env)
+1. Hace falta agregar las variables de entorno (.env)
 2. Instalar dependencias.
 ```bash
 npm install
