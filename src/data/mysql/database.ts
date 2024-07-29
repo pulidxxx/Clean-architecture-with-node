@@ -1,6 +1,6 @@
 import mysql from "mysql2/promise";
 
-interface Options {
+interface MySQLConfig {
   host: string;
   user: string;
   password: string;
@@ -8,13 +8,13 @@ interface Options {
 }
 
 export class MySQLDatabase {
-  static connection: mysql.Pool | null = null;
+  private static pool: mysql.Pool | null = null;
 
-  static async connect(options: Options) {
-    const { host, user, password, database } = options;
+  static async connect(config: MySQLConfig) {
+    const { host, user, password, database } = config;
 
     try {
-      this.connection = mysql.createPool({
+      this.pool = mysql.createPool({
         host,
         user,
         password,
@@ -24,8 +24,15 @@ export class MySQLDatabase {
       console.log("MySQL connected");
       return true;
     } catch (error) {
-      console.log("MySQL connection error");
+      console.error("MySQL connection error", error);
       throw error;
     }
+  }
+
+  static getPool() {
+    if (!this.pool) {
+      throw new Error("Database connection is not established");
+    }
+    return this.pool;
   }
 }
