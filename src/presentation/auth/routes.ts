@@ -12,10 +12,10 @@ export class AuthRoutes {
     const authRepository = new AuthRepositoryImpl(datasource);
     const controller = new AuthController(authRepository);
 
+    router.get("/", [AuthMiddleware.validateJWT], controller.getUsers);
     router.post("/login", controller.loginUser);
     router.post("/register", controller.registerUser);
     router.delete("/:id", [AuthMiddleware.validateJWT], controller.deleteUser);
-    router.get("/", [AuthMiddleware.validateJWT], controller.getUsers);
     router.put("/:id", [AuthMiddleware.validateJWT], controller.updateUser);
 
     return router;

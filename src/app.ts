@@ -2,7 +2,6 @@ import { envs } from "./config";
 import { MongoDatabase } from "./data/mongodb";
 import { AppRoutes } from "./presentation/routes";
 import { Server } from "./presentation/server";
-import { mysqlConfig } from "./config/mysqlconfig";
 import { MySQLDatabase } from "./data/mysql/database";
 
 (() => {
@@ -10,12 +9,18 @@ import { MySQLDatabase } from "./data/mysql/database";
 })();
 
 async function main() {
-  await MongoDatabase.connect({
-    dbName: envs.MONGO_DB_NAME,
-    mongoUrl: envs.MONGO_URL,
-  });
+  // Connect to the mongo database
+  // await MongoDatabase.connect({
+  //   dbName: envs.MONGO_DB_NAME,
+  //   mongoUrl: envs.MONGO_URL,
+  // });
 
-  await MySQLDatabase.connect(mysqlConfig);
+  await MySQLDatabase.connect({
+    host: envs.MYSQL_HOST,
+    user: envs.MYSQL_USER,
+    password: envs.MYSQL_PASSWORD,
+    database: envs.MYSQL_DATABASE,
+  });
 
   // Start the server
   new Server({

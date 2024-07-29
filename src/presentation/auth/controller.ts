@@ -7,7 +7,7 @@ import {
   RegisterUser,
   RegisterUserDto,
 } from "../../domain";
-import { UserModel } from "../../data/mongodb";
+import { UserModel } from "../../data/mysql";
 
 export class AuthController {
   constructor(private readonly authRepository: AuthRepository) {}
@@ -46,22 +46,22 @@ export class AuthController {
   };
 
   getUsers = (req: Request, res: Response) => {
-    UserModel.find()
+    UserModel.findAll()
       .then((users) => {
         res.json({
           users,
           user: req.body.user,
         });
       })
-      .catch(() => res.status(500).json({ error: "Internal server error" }));
+      .catch((error) => this.handleError(error, res));
   };
 
   deleteUser = (req: Request, res: Response) => {
     const { id } = req.params;
 
-    UserModel.findByIdAndDelete(id)
-      .then((user) => {
-        if (!user) {
+    UserModel.deleteByID(parseInt(id))
+      .then((deleted) => {
+        if (!deleted) {
           return res.status(404).json({ error: "User not found" });
         }
         res.status(200).json({ message: "User deleted successfully" });
@@ -73,7 +73,7 @@ export class AuthController {
     const { id } = req.params;
     const updateData = req.body;
 
-    UserModel.findByIdAndUpdate(id, updateData, { new: true })
+    UserModel.updateByID(parseInt(id), updateData)
       .then((user) => {
         if (!user) {
           return res.status(404).json({ error: "User not found" });
