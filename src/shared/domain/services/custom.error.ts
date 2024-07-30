@@ -1,3 +1,4 @@
+// Custom error class to handle errors in the application, it can be WinstonLogger or any other logger
 export class CustomError extends Error {
   constructor(
     public readonly statusCode: number,

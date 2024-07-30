@@ -1,6 +1,6 @@
 import { JwtAdapter } from "../../../config";
 import { RegisterUserDto } from "../../dtos/auth/register-user.dto";
-import { CustomError } from "../../errors/custom.error";
+import { CustomError } from "../../../shared/domain/services/custom.error";
 import { AuthRepository } from "../../repositories/auth.repository";
 
 interface UserToken {

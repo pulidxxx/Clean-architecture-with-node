@@ -1,7 +1,10 @@
 import { Router } from "express";
-import { AuthController } from "../../../apps/express/crudUsers";
-import { AuthDatasourceImpl, AuthRepositoryImpl } from "../../infrastructure";
-import { AuthMiddleware } from "../middlewares/auth.middleware";
+import {
+  AuthDatasourceImpl,
+  AuthRepositoryImpl,
+} from "../../src/infrastructure";
+import { AuthMiddleware } from "../../src/presentation/middlewares/auth.middleware";
+import { AuthController } from "./crudUsers";
 
 export class AuthRoutes {
   static get routes(): Router {
