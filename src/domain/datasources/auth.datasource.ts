@@ -1,4 +1,4 @@
-import { UserEntity } from "../entities/user.entity";
+import { UserEntity } from "../../shared/domain/models/user.model";
 import { LoginUserDto, RegisterUserDto } from "..";
 
 export abstract class AuthDatasource {

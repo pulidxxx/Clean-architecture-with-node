@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { JwtAdapter } from "../../config";
-import { UserModel } from "../../data/mysql";
+
+import { JwtAdapter } from "../../shared/domain/services";
+import { UserModel } from "../../shared/domain/infra/mysql/models/user.model";
 
 export class AuthMiddleware {
   static validateJWT = async (

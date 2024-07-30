@@ -1,5 +1,4 @@
-import { BcryptAdapter } from "../../config";
-import { UserModel } from "../../data/mysql";
+import { BcryptAdapter } from "../../shared/domain/services";
 
 import {
   AuthDatasource,
@@ -9,6 +8,7 @@ import {
   UserEntity,
 } from "../../domain";
 import { UserMapper } from "../mappers/user.mapper";
+import { UserModel } from "../../shared/domain/infra/mysql/models/user.model";
 
 type HashFunction = (password: string) => string;
 type CompareFunction = (password: string, hashed: string) => boolean;

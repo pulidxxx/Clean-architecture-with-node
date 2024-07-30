@@ -1,6 +1,6 @@
-import { JwtAdapter } from "../../../config";
-import { LoginUserDto } from "../../dtos/auth/login-user.dto";
-import { RegisterUserDto } from "../../dtos/auth/register-user.dto";
+import { LoginUserDto } from "../../../shared/domain/dtos/login-user.dto";
+import { RegisterUserDto } from "../../../shared/domain/dtos/register-user.dto";
+import { JwtAdapter } from "../../../shared/domain/services";
 import { CustomError } from "../../../shared/domain/services/custom.error";
 import { AuthRepository } from "../../repositories/auth.repository";
 

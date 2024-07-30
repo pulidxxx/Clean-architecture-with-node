@@ -1,11 +1,11 @@
 export * from "./datasources/auth.datasource";
 
-export * from "./dtos/auth/register-user.dto";
-export * from "./dtos/auth/login-user.dto";
+export * from "../shared/domain/dtos/register-user.dto";
+export * from "../shared/domain/dtos/login-user.dto";
 
 export * from "../shared/domain/services/custom.error";
 
-export * from "./entities/user.entity";
+export * from "../shared/domain/models/user.model";
 
 export * from "./repositories/auth.repository";
 

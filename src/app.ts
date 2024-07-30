@@ -1,20 +1,13 @@
-import { envs } from "./config";
-import { MongoDatabase } from "./data/mongodb";
 import { AppRoutes } from "./presentation/routes";
 import { Server } from "./presentation/server";
-import { MySQLDatabase } from "./data/mysql/database";
+import { MySQLDatabase } from "./shared/domain/infra/mysql";
+import { envs } from "./shared/domain/services";
 
 (() => {
   main();
 })();
 
 async function main() {
-  // Connect to the mongo database
-  // await MongoDatabase.connect({
-  //   dbName: envs.MONGO_DB_NAME,
-  //   mongoUrl: envs.MONGO_URL,
-  // });
-
   await MySQLDatabase.connect({
     host: envs.MYSQL_HOST,
     user: envs.MYSQL_USER,

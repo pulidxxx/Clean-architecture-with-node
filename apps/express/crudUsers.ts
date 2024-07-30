@@ -7,7 +7,7 @@ import {
   RegisterUser,
   RegisterUserDto,
 } from "../../src/domain";
-import { UserModel } from "../../src/data/mysql";
+import { UserModel } from "../../src/shared/domain/infra/mysql/models/user.model";
 
 export class AuthController {
   constructor(private readonly authRepository: AuthRepository) {}

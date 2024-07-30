@@ -1,5 +1,5 @@
-import { MySQLDatabase } from "../database";
 import { RowDataPacket, ResultSetHeader } from "mysql2";
+import { MySQLDatabase } from "../database";
 
 export class UserModel {
   // Users CRUD operations
