@@ -1,10 +1,5 @@
 import { Router } from "express";
-import {
-  AuthDatasourceImpl,
-  AuthRepositoryImpl,
-} from "../../src/infrastructure";
-import { AuthMiddleware } from "../../src/presentation/middlewares/auth.middleware";
-import { AuthController } from "./crudUsers";
+import { AuthMiddleware } from "../../src/shared/infra/middleware/auth.middleware";
 import { CrudUsersApp } from "../../src/admin/crudUsers/app/crudUsers.app";
 
 export class AuthRoutes {

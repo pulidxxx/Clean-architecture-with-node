@@ -1,4 +1,5 @@
-import { CustomError, UserEntity } from "../../domain";
+import { UserEntity } from "../models/user.model";
+import { CustomError } from "../../../../shared/domain/services/custom.error";
 
 export class UserMapper {
   static userEntityFromObject(object: { [key: string]: any }) {

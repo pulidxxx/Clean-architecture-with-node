@@ -1,6 +1,6 @@
-import { AppRoutes } from "./presentation/routes";
-import { Server } from "./presentation/server";
-import { MySQLDatabase } from "./shared/domain/infra/mysql";
+import { AppRoutes } from "./routes";
+import { Server } from "./server";
+import { MySQLDatabase } from "./shared/infra/mysql/database";
 import { envs } from "./shared/domain/services";
 
 (() => {

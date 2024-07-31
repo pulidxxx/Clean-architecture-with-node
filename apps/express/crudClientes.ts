@@ -1,16 +1,15 @@
 import { Request, Response } from "express";
-import {
-  AuthRepository,
-  CustomError,
-  LoginUser,
-  LoginUserDto,
-  RegisterUser,
-  RegisterUserDto,
-} from "../../src/domain";
-import { UserModel } from "../../src/shared/domain/infra/mysql/models/user.model";
+import { UserModel } from "../../src/admin/crudUsers/infra/crudUsers.mysql";
+
+import { LoginUserDto } from "../../src/admin/crudUsers/domain/dtos/login-user.dto";
+import { RegisterUserDto } from "../../src/admin/crudUsers/domain/dtos/register-user.dto";
+import { AuthRepositoryImpl } from "../../src/admin/crudUsers/domain/repositories/auth.repository.impl";
+import { CustomError } from "../../src/shared/domain/services/custom.error";
+import { RegisterUser } from "../../src/admin/crudUsers/domain/services/register-user.use-case";
+import { LoginUser } from "../../src/admin/crudUsers/domain/services/login-user.use-case";
 
 export class AuthController {
-  constructor(private readonly authRepository: AuthRepository) {}
+  constructor(private readonly authRepository: AuthRepositoryImpl) {}
 
   // This method is used to handle errors in the controller
   // Can be replaced with winston or any other logger

@@ -1,7 +1,8 @@
-import { RegisterUserDto } from "../../../shared/domain/dtos/register-user.dto";
-import { JwtAdapter } from "../../../shared/domain/services";
-import { CustomError } from "../../../shared/domain/services/custom.error";
-import { AuthRepository } from "../../repositories/auth.repository";
+import { JwtAdapter } from "../../../../shared/domain/services";
+import { CustomError } from "../../../../shared/domain/services/custom.error";
+
+import { RegisterUserDto } from "../dtos/register-user.dto";
+import { AuthRepositoryImpl } from "../repositories/auth.repository.impl";
 
 interface UserToken {
   token: string;
@@ -21,7 +22,7 @@ interface RegisterUserUseCase {
 // Use case to register a new user in the system and return a token and user data
 export class RegisterUser implements RegisterUserUseCase {
   constructor(
-    private readonly authResository: AuthRepository,
+    private readonly authResository: AuthRepositoryImpl,
     private readonly signToken: SignToken = JwtAdapter.generateToken
   ) {}
 

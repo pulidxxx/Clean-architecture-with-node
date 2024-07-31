@@ -1,20 +1,17 @@
-import { BcryptAdapter } from "../../shared/domain/services";
+import { BcryptAdapter } from "../../../../shared/domain/services";
 
-import {
-  AuthDatasource,
-  CustomError,
-  LoginUserDto,
-  RegisterUserDto,
-  UserEntity,
-} from "../../domain";
 import { UserMapper } from "../mappers/user.mapper";
-import { UserModel } from "../../shared/domain/infra/mysql/models/user.model";
+import { UserModel } from "../../infra/crudUsers.mysql";
+import { LoginUserDto } from "../dtos/login-user.dto";
+import { RegisterUserDto } from "../dtos/register-user.dto";
+import { UserEntity } from "../models/user.model";
+import { CustomError } from "../../../../shared/domain/services/custom.error";
 
 type HashFunction = (password: string) => string;
 type CompareFunction = (password: string, hashed: string) => boolean;
 
 // Implementation of the AuthDatasource interface to interact with the database and perform operations
-export class AuthDatasourceImpl implements AuthDatasource {
+export class AuthDatasourceImpl {
   // Constructor to inject the hash and compare functions
   constructor(
     private readonly hashPassword: HashFunction = BcryptAdapter.hash,

@@ -1,4 +1,4 @@
-import { Validators } from "../services";
+import { Validators } from "../../../../shared/domain/services";
 
 export class LoginUserDto {
   constructor(public email: string, public password: string) {}

@@ -1,9 +1,6 @@
 import { AuthController } from "../../../../apps/express/crudUsers";
-import { AuthDatasource } from "../../../domain";
-import {
-  AuthDatasourceImpl,
-  AuthRepositoryImpl,
-} from "../../../infrastructure";
+import { AuthRepositoryImpl } from "../domain/repositories/auth.repository.impl";
+import { AuthDatasourceImpl } from "../domain/services/auth.datasource.impl";
 
 export class CrudUsersApp {
   // Create the repository and controller
