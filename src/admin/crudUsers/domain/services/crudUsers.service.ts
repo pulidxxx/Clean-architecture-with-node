@@ -12,7 +12,6 @@ import { UpdateUserDto } from "../dtos/update-user.dto";
 type HashFunction = (password: string) => string;
 type CompareFunction = (password: string, hashed: string) => boolean;
 
-// Implementation of the AuthDatasource interface to interact with the database and perform operations
 export class CrudUsersService {
   // Constructor to inject the hash and compare functions
   constructor(

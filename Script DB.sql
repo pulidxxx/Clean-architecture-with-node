@@ -1,5 +1,5 @@
 CREATE TABLE camisa (
-    idCamisa INT NOT NULL,
+    idCamisa INT NOT NULL AUTO_INCREMENT,
     imagen VARCHAR(50) NOT NULL,
     precio DECIMAL(10,2) NOT NULL,
     talla VARCHAR(20) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE camisa (
 );
 
 CREATE TABLE camisetas (
-    idCamiseta INT NOT NULL,
+    idCamiseta INT NOT NULL AUTO_INCREMENT,
     diseño TEXT NOT NULL,
     nombre VARCHAR(30) NOT NULL,
     tipo VARCHAR(20) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE camisetas (
 );
 
 CREATE TABLE estampado (
-    idEstampado INT NOT NULL,
+    idEstampado INT NOT NULL AUTO_INCREMENT,
     diseño TEXT NOT NULL,
     nombre VARCHAR(20) NOT NULL,
     categoria VARCHAR(20) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE estampado (
 );
 
 CREATE TABLE informacion_envio (
-    id INT NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
     barrio VARCHAR(45) NOT NULL,
     ciudad VARCHAR(45) NOT NULL,
     pais VARCHAR(45) NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE material (
 );
 
 CREATE TABLE pedido (
-    numeroPedido INT NOT NULL,
+    numeroPedido INT NOT NULL AUTO_INCREMENT,
     valor DECIMAL(10,2) NOT NULL,
     estado VARCHAR(15) NOT NULL,
     fechaPedido DATE NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE rol (
 CREATE TABLE usuario (
     email VARCHAR(45) NOT NULL,
     nombre VARCHAR(45) NOT NULL,
-    password VARCHAR(45) NOT NULL,
+    password VARCHAR(60) NOT NULL,
     rolId INT NOT NULL,
     PRIMARY KEY (email)
 );

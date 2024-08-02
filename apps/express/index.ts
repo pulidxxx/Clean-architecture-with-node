@@ -1,27 +1,40 @@
 import { Router } from "express";
 import { AuthMiddleware } from "../../src/shared/infra/middleware/auth.middleware";
 import { CrudUsersApp } from "../../src/admin/crudUsers/app/crudUsers.app";
+import { CrudRolesApp } from "../../src/admin/crudRoles/app/crudRoles.app";
 
 export class AuthRoutes {
   static get routes(): Router {
     const router = Router();
 
     // Create the repository and controller
-    const controller = new CrudUsersApp().controllerUser();
+    const controllerUsers = new CrudUsersApp().controllerUser();
+    const controllerRoles = new CrudRolesApp().controllerRoles();
 
-    router.get("/", [AuthMiddleware.validateJWT], controller.getUsers);
-    router.post("/login", controller.loginUser);
-    router.post("/register", controller.registerUser);
-    router.delete(
-      "/:email",
+    // User routes
+    router.get(
+      "/user/",
       [AuthMiddleware.validateJWT],
-      controller.deleteUser
+      controllerUsers.getUsers
+    );
+    router.post("/user/login", controllerUsers.loginUser);
+    router.post("/user/register", controllerUsers.registerUser);
+    router.delete(
+      "/user/:email",
+      [AuthMiddleware.validateJWT],
+      controllerUsers.deleteUser
     );
     router.put(
-      "/:oldEmail",
+      "/user/:oldEmail",
       [AuthMiddleware.validateJWT],
-      controller.updateUser
+      controllerUsers.updateUser
     );
+
+    // Rol routes
+    router.get("/role/", controllerRoles.getRoles);
+    router.post("/role/create", controllerRoles.createRole);
+    router.delete("/role/:id", controllerRoles.deleteRole);
+    router.put("/role/:id", controllerRoles.updateRole);
 
     return router;
   }
