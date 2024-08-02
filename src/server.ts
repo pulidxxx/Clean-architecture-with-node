@@ -17,14 +17,14 @@ export class Server {
   }
 
   async start() {
-    // Middlewares
+    // Mmiddleware that allows the server to accept JSON data
     this.app.use(express.json());
-    this.app.use(express.urlencoded({ extended: true })); // x-www-
+    this.app.use(express.urlencoded({ extended: true })); // Accept form data
 
-    // Usar las rutas definidas
+    // Add the routes to the server
     this.app.use(this.routes);
 
-    // Escuchar el puerto
+    // Start the server on the specified port
     this.app.listen(this.port, () => {
       console.log(`Server running on port ${this.port}`);
     });

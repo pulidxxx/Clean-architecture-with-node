@@ -8,6 +8,7 @@ import { envs } from "./shared/domain/services";
 })();
 
 async function main() {
+  // Connect to the database
   await MySQLDatabase.connect({
     host: envs.MYSQL_HOST,
     user: envs.MYSQL_USER,

@@ -1,18 +1,19 @@
 import { Request, Response } from "express";
-import { UserModel } from "../../src/admin/crudUsers/infra/crudUsers.mysql";
-
+import { CrudUsersMySQL } from "../../src/admin/crudUsers/infra/crudUsers.mysql";
+import { UpdateUserDto } from "../../src/admin/crudUsers/domain/dtos/update-user.dto";
 import { LoginUserDto } from "../../src/admin/crudUsers/domain/dtos/login-user.dto";
 import { RegisterUserDto } from "../../src/admin/crudUsers/domain/dtos/register-user.dto";
-import { AuthRepositoryImpl } from "../../src/admin/crudUsers/domain/repositories/auth.repository.impl";
+import { CrudUsersRepository } from "../../src/admin/crudUsers/domain/repositories/crudUsers.reporitory";
 import { CustomError } from "../../src/shared/domain/services/custom.error";
 import { RegisterUser } from "../../src/admin/crudUsers/domain/services/register-user.use-case";
 import { LoginUser } from "../../src/admin/crudUsers/domain/services/login-user.use-case";
+import { UpdateUser } from "../../src/admin/crudUsers/domain/services/update-user.use-case";
 
-export class AuthController {
-  constructor(private readonly authRepository: AuthRepositoryImpl) {}
+export class CrudUsers {
+  constructor(private readonly crudUsersRepository: CrudUsersRepository) {}
 
   // This method is used to handle errors in the controller
-  // Can be replaced with winston or any other logger
+  // Can be replaced with winston
   private handleError = (error: unknown, res: Response) => {
     if (error instanceof CustomError) {
       return res.status(error.statusCode).json({ error: error.message });
@@ -22,13 +23,12 @@ export class AuthController {
     return res.status(500).json({ error: "Internal Server Error" });
   };
 
-  // This method is used to register a new user
   registerUser = (req: Request, res: Response) => {
     const [error, registerUserDto] = RegisterUserDto.create(req.body);
     if (error) return res.status(400).json({ error });
 
     // Call the RegisterUser use case
-    new RegisterUser(this.authRepository)
+    new RegisterUser(this.crudUsersRepository)
       .execute(registerUserDto!)
       .then((data) => res.json(data))
       .catch((error) => this.handleError(error, res));
@@ -38,14 +38,14 @@ export class AuthController {
     const [error, loginUserDto] = LoginUserDto.create(req.body);
     if (error) return res.status(400).json({ error });
 
-    new LoginUser(this.authRepository)
+    new LoginUser(this.crudUsersRepository)
       .execute(loginUserDto!)
       .then((data) => res.json(data))
       .catch((error) => this.handleError(error, res));
   };
 
   getUsers = (req: Request, res: Response) => {
-    UserModel.findAll()
+    CrudUsersMySQL.findAll()
       .then((users) => {
         res.json({
           users,
@@ -56,9 +56,9 @@ export class AuthController {
   };
 
   deleteUser = (req: Request, res: Response) => {
-    const { id } = req.params;
+    const { email } = req.params;
 
-    UserModel.deleteByID(parseInt(id))
+    CrudUsersMySQL.deleteByEmail(email)
       .then((deleted) => {
         if (!deleted) {
           return res.status(404).json({ error: "User not found" });
@@ -69,16 +69,13 @@ export class AuthController {
   };
 
   updateUser = (req: Request, res: Response) => {
-    const { id } = req.params;
-    const updateData = req.body;
+    const { oldEmail } = req.params;
+    const [error, updateUserDto] = UpdateUserDto.create(oldEmail, req.body);
+    if (error) return res.status(400).json({ error });
 
-    UserModel.updateByID(parseInt(id), updateData)
-      .then((user) => {
-        if (!user) {
-          return res.status(404).json({ error: "User not found" });
-        }
-        res.status(200).json({ message: "User updated successfully", user });
-      })
+    new UpdateUser(this.crudUsersRepository)
+      .execute(updateUserDto!)
+      .then((data) => res.json(data))
       .catch((error) => this.handleError(error, res));
   };
 }

@@ -3,16 +3,13 @@ import { CustomError } from "../../../../shared/domain/services/custom.error";
 
 export class UserMapper {
   static userEntityFromObject(object: { [key: string]: any }) {
-    const { id, _id, name, email, password, roles } = object;
+    const { nombre, email, password, rolId } = object;
 
-    if (!id) {
-      throw CustomError.badRequest("Missing id");
-    }
-    if (!name) throw CustomError.badRequest("Missing name");
+    if (!nombre) throw CustomError.badRequest("Missing name");
     if (!email) throw CustomError.badRequest("Missing email");
     if (!password) throw CustomError.badRequest("Missing password");
-    if (!roles) throw CustomError.badRequest("Missing roles");
+    if (!rolId) throw CustomError.badRequest("Missing rol");
 
-    return new UserEntity(_id || id, name, email, password, roles);
+    return new UserEntity(nombre, email, password, rolId);
   }
 }

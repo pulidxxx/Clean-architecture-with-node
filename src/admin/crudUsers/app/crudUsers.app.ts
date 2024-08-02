@@ -1,13 +1,13 @@
-import { AuthController } from "../../../../apps/express/crudUsers";
-import { AuthRepositoryImpl } from "../domain/repositories/auth.repository.impl";
-import { AuthDatasourceImpl } from "../domain/services/auth.datasource.impl";
+import { CrudUsers } from "../../../../apps/express/crudUsers";
+import { CrudUsersRepository } from "../domain/repositories/crudUsers.reporitory";
+import { CrudUsersService } from "../domain/services/crudUsers.service";
 
 export class CrudUsersApp {
   // Create the repository and controller
   controllerUser = () => {
-    const datasource = new AuthDatasourceImpl();
-    const authRepository = new AuthRepositoryImpl(datasource);
-    const controller = new AuthController(authRepository);
-    return controller;
+    const usersService = new CrudUsersService();
+    const usersRepository = new CrudUsersRepository(usersService);
+    const userController = new CrudUsers(usersRepository);
+    return userController;
   };
 }

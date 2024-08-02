@@ -3,13 +3,12 @@ import { CustomError } from "../../../../shared/domain/services/custom.error";
 
 import { RegisterUserDto } from "../dtos/register-user.dto";
 import { LoginUserDto } from "../dtos/login-user.dto";
-import { AuthRepositoryImpl } from "../repositories/auth.repository.impl";
+import { CrudUsersRepository } from "../repositories/crudUsers.reporitory";
 
 interface UserToken {
   token: string;
   user: {
-    id: string;
-    name: string;
+    nombre: string;
     email: string;
   };
 }
@@ -23,7 +22,7 @@ interface LoginUserUseCase {
 // Use case to login a user in the system and return a token and user data
 export class LoginUser implements LoginUserUseCase {
   constructor(
-    private readonly authResository: AuthRepositoryImpl,
+    private readonly authResository: CrudUsersRepository,
     private readonly signToken: SignToken = JwtAdapter.generateToken
   ) {}
 
@@ -32,14 +31,13 @@ export class LoginUser implements LoginUserUseCase {
     const user = await this.authResository.login(loginUserDto);
 
     // Check if the user exists
-    const token = await this.signToken({ id: user.id }, "2h");
+    const token = await this.signToken({ email: user.email }, "2h");
     if (!token) throw CustomError.internalServer("Error generating token");
 
     return {
       token: token,
       user: {
-        id: user.id,
-        name: user.name,
+        nombre: user.nombre,
         email: user.email,
       },
     };

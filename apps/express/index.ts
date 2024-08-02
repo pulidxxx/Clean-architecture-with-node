@@ -12,8 +12,16 @@ export class AuthRoutes {
     router.get("/", [AuthMiddleware.validateJWT], controller.getUsers);
     router.post("/login", controller.loginUser);
     router.post("/register", controller.registerUser);
-    router.delete("/:id", [AuthMiddleware.validateJWT], controller.deleteUser);
-    router.put("/:id", [AuthMiddleware.validateJWT], controller.updateUser);
+    router.delete(
+      "/:email",
+      [AuthMiddleware.validateJWT],
+      controller.deleteUser
+    );
+    router.put(
+      "/:oldEmail",
+      [AuthMiddleware.validateJWT],
+      controller.updateUser
+    );
 
     return router;
   }

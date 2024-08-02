@@ -2,20 +2,22 @@ import { Validators } from "../../../../shared/domain/services";
 
 export class RegisterUserDto {
   private constructor(
-    public name: string,
+    public nombre: string,
     public email: string,
-    public password: string
+    public password: string,
+    public rolId: number
   ) {}
 
   static create(object: { [key: string]: any }): [string?, RegisterUserDto?] {
-    const { name, email, password } = object;
+    const { nombre, email, password, rolId } = object;
 
-    if (!name) return ["Missing name"];
+    if (!nombre) return ["Missing name"];
     if (!email) return ["Missing email"];
     if (!Validators.email.test(email)) return ["Email is not valid"];
     if (!password) return ["Missing password"];
     if (password.length < 6) return ["Password too short"];
+    if (!rolId) return ["Missing rol"];
 
-    return [undefined, new RegisterUserDto(name, email, password)];
+    return [undefined, new RegisterUserDto(nombre, email, password, rolId)];
   }
 }
