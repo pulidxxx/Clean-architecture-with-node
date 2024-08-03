@@ -23,14 +23,6 @@ export class UpdateShippingInfoDto {
       telefono,
       usuarioEmail,
     } = object;
-    if (!barrio) return ["Missing barrio"];
-    if (!ciudad) return ["Missing ciudad"];
-    if (!pais) return ["Missing pais"];
-    if (!codigoPostal) return ["Missing codigoPostal"];
-    if (!direccion) return ["Missing direccion"];
-    if (!telefono) return ["Missing telefono"];
-    if (!usuarioEmail) return ["Missing Email del usuario"];
-    if (!Validators.email.test(usuarioEmail)) return ["Email is not valid"];
 
     return [
       undefined,
