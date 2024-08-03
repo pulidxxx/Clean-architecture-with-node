@@ -16,7 +16,7 @@ export class RegisterUserDto {
     if (!Validators.email.test(email)) return ["Email is not valid"];
     if (!password) return ["Missing password"];
     if (password.length < 6) return ["Password too short"];
-    if (!rolId) return ["Missing rol"];
+    if (!rolId) return ["Missing role"];
 
     return [undefined, new RegisterUserDto(nombre, email, password, rolId)];
   }

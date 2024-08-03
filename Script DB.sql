@@ -1,3 +1,49 @@
+-- Crear tablas sin dependencias
+CREATE TABLE rol (
+    id INT NOT NULL,
+    nombre VARCHAR(45) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE usuario (
+    email VARCHAR(45) NOT NULL,
+    nombre VARCHAR(45) NOT NULL,
+    password VARCHAR(60) NOT NULL,
+    rolId INT NOT NULL,
+    PRIMARY KEY (email)
+);
+
+CREATE TABLE material (
+    nombre VARCHAR(20) NOT NULL,
+    cantidad INT NOT NULL,
+    PRIMARY KEY (nombre)
+);
+
+CREATE TABLE informacion_envio (
+    id INT NOT NULL AUTO_INCREMENT,
+    barrio VARCHAR(45) NOT NULL,
+    ciudad VARCHAR(45) NOT NULL,
+    pais VARCHAR(45) NOT NULL,
+    codigoPostal VARCHAR(10) NOT NULL,
+    direccion VARCHAR(45) NOT NULL,
+    telefono VARCHAR(13) NOT NULL,
+    usuarioEmail VARCHAR(45) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+-- Crear tablas que dependen de las anteriores
+CREATE TABLE pedido (
+    numeroPedido INT NOT NULL AUTO_INCREMENT,
+    valor DECIMAL(10,2) NOT NULL,
+    estado VARCHAR(15) NOT NULL,
+    fechaPedido DATE NOT NULL,
+    fechaEnvio DATE NOT NULL,
+    usuarioEmail VARCHAR(45) NOT NULL,
+    informacionEnvioId INT NOT NULL,
+    PRIMARY KEY (numeroPedido)
+);
+
+-- Crear tablas que dependen de las tablas creadas en los pasos anteriores
 CREATE TABLE camisa (
     idCamisa INT NOT NULL AUTO_INCREMENT,
     imagen VARCHAR(50) NOT NULL,
@@ -5,7 +51,7 @@ CREATE TABLE camisa (
     talla VARCHAR(20) NOT NULL,
     cantidad INT NOT NULL,
     idEstampado INT,
-    Material VARCHAR(20) NOT NULL,
+    nombre VARCHAR(20) NOT NULL,
     numeroPedido INT NOT NULL,
     PRIMARY KEY (idCamisa)
 );
@@ -29,51 +75,9 @@ CREATE TABLE estampado (
     PRIMARY KEY (idEstampado)
 );
 
-CREATE TABLE informacion_envio (
-    id INT NOT NULL AUTO_INCREMENT,
-    barrio VARCHAR(45) NOT NULL,
-    ciudad VARCHAR(45) NOT NULL,
-    pais VARCHAR(45) NOT NULL,
-    codigoPostal VARCHAR(10) NOT NULL,
-    direccion VARCHAR(45) NOT NULL,
-    telefono VARCHAR(13) NOT NULL,
-    usuarioEmail VARCHAR(45) NOT NULL,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE material (
-    Material VARCHAR(20) NOT NULL,
-    cantidad INT NOT NULL,
-    PRIMARY KEY (Material)
-);
-
-CREATE TABLE pedido (
-    numeroPedido INT NOT NULL AUTO_INCREMENT,
-    valor DECIMAL(10,2) NOT NULL,
-    estado VARCHAR(15) NOT NULL,
-    fechaPedido DATE NOT NULL,
-    fechaEnvio DATE NOT NULL,
-    usuarioEmail VARCHAR(45) NOT NULL,
-    informacionEnvioId INT NOT NULL,
-    PRIMARY KEY (numeroPedido)
-);
-
-CREATE TABLE rol (
-    id INT NOT NULL,
-    nombre VARCHAR(45) NOT NULL,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE usuario (
-    email VARCHAR(45) NOT NULL,
-    nombre VARCHAR(45) NOT NULL,
-    password VARCHAR(60) NOT NULL,
-    rolId INT NOT NULL,
-    PRIMARY KEY (email)
-);
-
+-- Agregar restricciones de claves foráneas en el orden correcto
 ALTER TABLE camisa
-    ADD CONSTRAINT FK_camisa_material FOREIGN KEY (Material) REFERENCES material(Material) ON DELETE CASCADE;
+    ADD CONSTRAINT FK_camisa_material FOREIGN KEY (nombre) REFERENCES material(nombre) ON DELETE CASCADE;
 
 ALTER TABLE camisa
     ADD CONSTRAINT FK_camisa_pedido FOREIGN KEY (numeroPedido) REFERENCES pedido(numeroPedido) ON DELETE CASCADE;

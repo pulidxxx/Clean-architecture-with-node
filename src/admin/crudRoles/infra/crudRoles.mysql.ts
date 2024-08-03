@@ -22,7 +22,9 @@ export class CrudRolesMySQL {
   }
 
   static async findByName(name: string) {
-    const role = await executeQuery("SELECT * FROM rol WHERE id = ?", [name]);
+    const role = await executeQuery("SELECT * FROM rol WHERE nombre = ?", [
+      name,
+    ]);
     return role[0];
   }
 

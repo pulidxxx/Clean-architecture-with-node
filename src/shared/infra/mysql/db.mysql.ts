@@ -30,6 +30,7 @@ export async function updateRecord(
     const [updatedRecord] = await MySQLDatabase.getPool().query<
       RowDataPacket[]
     >(`SELECT * FROM ${table} WHERE id = ?`, [id]);
+
     return updatedRecord[0];
   }
   return null;

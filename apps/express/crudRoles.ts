@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { CustomError } from "../../src/shared/domain/services/custom.error";
 import { CrudRolesMySQL } from "../../src/admin/crudRoles/infra/crudRoles.mysql";
-import { CreateRole } from "../../src/admin/crudRoles/domain/services/create-rol.use-case";
-import { CreateRoleDto } from "../../src/admin/crudRoles/domain/dtos/create-rol.dto";
+import { CreateRole } from "../../src/admin/crudRoles/domain/services/create-role.use-case";
+import { CreateRoleDto } from "../../src/admin/crudRoles/domain/dtos/create-role.dto";
 import { CrudRolesRepository } from "../../src/admin/crudRoles/domain/repositories/crudRoles.reporitory";
-import { UpdateRoleDto } from "../../src/admin/crudRoles/domain/dtos/update-rol.dto";
-import { UpdateRole } from "../../src/admin/crudRoles/domain/services/update-rol.use-case";
+import { UpdateRoleDto } from "../../src/admin/crudRoles/domain/dtos/update-role.dto";
+import { UpdateRole } from "../../src/admin/crudRoles/domain/services/update-role.use-case";
 
 export class CrudRoles {
   constructor(private readonly crudRolesRepository: CrudRolesRepository) {}
@@ -49,7 +49,7 @@ export class CrudRoles {
     CrudRolesMySQL.deleteByID(parseInt(id))
       .then((deleted) => {
         if (!deleted) {
-          return res.status(404).json({ error: "User not found" });
+          return res.status(404).json({ error: "Role not found" });
         }
         res.status(200).json({ message: "Role deleted successfully" });
       })

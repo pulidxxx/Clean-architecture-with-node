@@ -5,7 +5,7 @@ export class CreateRoleDto {
     const { id, nombre } = object;
 
     if (!id) return ["Missing id"];
-    if (!nombre) return ["Missing rol"];
+    if (!nombre) return ["Missing nombre"];
 
     return [undefined, new CreateRoleDto(id, nombre)];
   }

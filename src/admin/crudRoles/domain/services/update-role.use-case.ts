@@ -1,5 +1,5 @@
 import { CustomError } from "../../../../shared/domain/services/custom.error";
-import { UpdateRoleDto } from "../dtos/update-rol.dto";
+import { UpdateRoleDto } from "../dtos/update-role.dto";
 import { RoleEntity } from "../models/role.model";
 import { CrudRolesRepository } from "../repositories/crudRoles.reporitory";
 
