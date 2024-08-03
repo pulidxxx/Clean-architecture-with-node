@@ -9,6 +9,8 @@ interface UserToken {
   user: {
     nombre: string;
     email: string;
+    password: string;
+    roleId: number;
   };
 }
 
@@ -40,6 +42,8 @@ export class RegisterUser implements RegisterUserUseCase {
       user: {
         nombre: user.nombre,
         email: user.email,
+        password: user.password,
+        roleId: user.roleId,
       },
     };
   }

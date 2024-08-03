@@ -9,20 +9,20 @@ export class CreateShippingInfo implements CreateShippingInfoUseCase {
   constructor(private readonly authResository: CrudShippingInfosRepository) {}
 
   async execute(createShippingInfoDto: CreateShippingInfoDto): Promise<any> {
-    const shippinginfo = await this.authResository.create(
+    const shippinginfos = await this.authResository.create(
       createShippingInfoDto
     );
 
     return {
-      shippinginfo: {
-        id: shippinginfo.id,
-        barrio: shippinginfo.barrio,
-        ciudad: shippinginfo.ciudad,
-        pais: shippinginfo.pais,
-        codigoPostal: shippinginfo.codigoPostal,
-        direccion: shippinginfo.direccion,
-        telefono: shippinginfo.telefono,
-        usuarioEmail: shippinginfo.usuarioEmail,
+      shippinginfos: {
+        id: shippinginfos.id,
+        barrio: shippinginfos.barrio,
+        ciudad: shippinginfos.ciudad,
+        pais: shippinginfos.pais,
+        codigoPostal: shippinginfos.codigoPostal,
+        direccion: shippinginfos.direccion,
+        telefono: shippinginfos.telefono,
+        usuarioEmail: shippinginfos.usuarioEmail,
       },
     };
   }

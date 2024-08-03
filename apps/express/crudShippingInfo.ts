@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { CustomError } from "../../src/shared/domain/services/custom.error";
-import { CrudShippingInfosRepository } from "../../src/admin/crudsShippingInfo/domain/repositories/crudShippingInfo.reporitory";
-import { CreateShippingInfoDto } from "../../src/admin/crudsShippingInfo/domain/dtos/create-shippingInfo.dto";
-import { CreateShippingInfo } from "../../src/admin/crudsShippingInfo/domain/services/create-shippingInfo.use-case";
-import { CrudShippingInfosMySQL } from "../../src/admin/crudsShippingInfo/infra/crudShippingInfo.mysql";
-import { UpdateShippingInfo } from "../../src/admin/crudsShippingInfo/domain/services/update-shippingInfo.use-case";
-import { UpdateShippingInfoDto } from "../../src/admin/crudsShippingInfo/domain/dtos/update-shippingInfo.dto";
+import { CrudShippingInfosRepository } from "../../src/admin/crudShippingInfo/domain/repositories/crudShippingInfo.reporitory";
+import { CreateShippingInfoDto } from "../../src/admin/crudShippingInfo/domain/dtos/create-shippingInfo.dto";
+import { CreateShippingInfo } from "../../src/admin/crudShippingInfo/domain/services/create-shippingInfo.use-case";
+import { CrudShippingInfosMySQL } from "../../src/admin/crudShippingInfo/infra/crudShippingInfo.mysql";
+import { UpdateShippingInfo } from "../../src/admin/crudShippingInfo/domain/services/update-shippingInfo.use-case";
+import { UpdateShippingInfoDto } from "../../src/admin/crudShippingInfo/domain/dtos/update-shippingInfo.dto";
 
 export class CrudShippingInfos {
   constructor(
@@ -38,10 +38,10 @@ export class CrudShippingInfos {
 
   getShippingInfos = (req: Request, res: Response) => {
     CrudShippingInfosMySQL.findAll()
-      .then((shippinginfos) => {
+      .then((shippinginfoss) => {
         res.json({
-          shippinginfos,
-          user: req.body.shippinginfo,
+          shippinginfoss,
+          user: req.body.shippinginfos,
         });
       })
       .catch((error) => this.handleError(error, res));

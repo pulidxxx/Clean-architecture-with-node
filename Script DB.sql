@@ -50,8 +50,8 @@ CREATE TABLE camisa (
     precio DECIMAL(10,2) NOT NULL,
     talla VARCHAR(20) NOT NULL,
     cantidad INT NOT NULL,
+    nombreMaterial VARCHAR(20) NOT NULL,
     idEstampado INT,
-    nombre VARCHAR(20) NOT NULL,
     numeroPedido INT NOT NULL,
     PRIMARY KEY (idCamisa)
 );
@@ -77,7 +77,10 @@ CREATE TABLE estampado (
 
 -- Agregar restricciones de claves foráneas en el orden correcto
 ALTER TABLE camisa
-    ADD CONSTRAINT FK_camisa_material FOREIGN KEY (nombre) REFERENCES material(nombre) ON DELETE CASCADE;
+    ADD CONSTRAINT FK_camisa_material FOREIGN KEY (nombreMaterial) REFERENCES material(nombre) ON DELETE CASCADE;
+
+ALTER TABLE camisa
+    ADD CONSTRAINT FK_camisa_estampado FOREIGN KEY (idEstampado) REFERENCES estampado(idEstampado) ON DELETE CASCADE;
 
 ALTER TABLE camisa
     ADD CONSTRAINT FK_camisa_pedido FOREIGN KEY (numeroPedido) REFERENCES pedido(numeroPedido) ON DELETE CASCADE;

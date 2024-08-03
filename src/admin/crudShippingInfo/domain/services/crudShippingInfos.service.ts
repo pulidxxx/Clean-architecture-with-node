@@ -23,7 +23,7 @@ export class CrudShippingInfosService {
     } = createShippingInfoDto;
 
     try {
-      const shippinginfoId = await CrudShippingInfosMySQL.create({
+      const shippinginfosId = await CrudShippingInfosMySQL.create({
         barrio,
         ciudad,
         pais,
@@ -34,8 +34,8 @@ export class CrudShippingInfosService {
       });
 
       // 3. Mapping to ShippingInfoEntity
-      const shippinginfo = await CrudShippingInfosMySQL.findLastAdded();
-      return ShippingInfoMapper.shippinginfoEntityFromObject(shippinginfo);
+      const shippinginfos = await CrudShippingInfosMySQL.findLastAdded();
+      return ShippingInfoMapper.shippinginfosEntityFromObject(shippinginfos);
     } catch (error) {
       if (error instanceof CustomError) {
         throw error;
@@ -45,7 +45,7 @@ export class CrudShippingInfosService {
     }
   }
 
-  // Method to update a shippinginfo
+  // Method to update a shippinginfos
   async update(
     id: number,
     updateShippingInfoDto: UpdateShippingInfoDto
@@ -83,13 +83,14 @@ export class CrudShippingInfosService {
       if (telefono) updateData.telefono = telefono;
       if (usuarioEmail) updateData.usuarioEmail = usuarioEmail;
 
-      // Update shippinginfo in the database
+      // Update shippinginfos in the database
       const updated = await CrudShippingInfosMySQL.updateByID(id, updateData);
-      if (!updated) throw CustomError.notFound("Failed to update shippinginfo");
+      if (!updated)
+        throw CustomError.notFound("Failed to update shippinginfos");
 
-      // Get the updated shippinginfo
+      // Get the updated shippinginfos
       const updatedShippingInfo = await CrudShippingInfosMySQL.findByID(id);
-      return ShippingInfoMapper.shippinginfoEntityFromObject(
+      return ShippingInfoMapper.shippinginfosEntityFromObject(
         updatedShippingInfo
       );
     } catch (error) {

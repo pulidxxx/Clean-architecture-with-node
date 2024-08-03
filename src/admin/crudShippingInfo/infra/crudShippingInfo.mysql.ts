@@ -6,7 +6,7 @@ import {
 } from "../../../shared/infra/mysql/db.mysql";
 
 export class CrudShippingInfosMySQL {
-  static async create(shippinginfo: {
+  static async create(shippinginfos: {
     barrio: string;
     ciudad: string;
     pais: string;
@@ -15,29 +15,32 @@ export class CrudShippingInfosMySQL {
     telefono: string;
     usuarioEmail: string;
   }) {
-    const shippinginfoId = await insertRecord(
+    const shippinginfosId = await insertRecord(
       "informacion_envio",
-      shippinginfo
+      shippinginfos
     );
-    return shippinginfoId;
+    return shippinginfosId;
   }
 
   static async findAll() {
-    const shippinginfos = await executeQuery("SELECT * FROM informacion_envio");
-    return shippinginfos;
+    const shippinginfoss = await executeQuery(
+      "SELECT * FROM informacion_envio"
+    );
+    return shippinginfoss;
   }
 
   static async findByID(id: number) {
-    const shippinginfo = await executeQuery(
+    const shippinginfos = await executeQuery(
       "SELECT * FROM informacion_envio WHERE id = ?",
       [id]
     );
-    return shippinginfo[0];
+    return shippinginfos[0];
   }
 
   static async updateByID(id: number, updateData: { [key: string]: any }) {
     const updatedShippingInfo = await updateRecord(
       "informacion_envio",
+      "id",
       id,
       updateData
     );

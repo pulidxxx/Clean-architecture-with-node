@@ -12,9 +12,9 @@ export async function insertRecord(table: string, data: any): Promise<number> {
   );
   return result.insertId;
 }
-
 export async function updateRecord(
   table: string,
+  idField: string,
   id: number,
   data: any
 ): Promise<any> {
@@ -22,14 +22,14 @@ export async function updateRecord(
   const setClause = validFields.map((field) => `${field} = ?`).join(", ");
 
   const [result] = await MySQLDatabase.getPool().query<ResultSetHeader>(
-    `UPDATE ${table} SET ${setClause} WHERE id = ?`,
+    `UPDATE ${table} SET ${setClause} WHERE ${idField} = ?`,
     [...Object.values(data), id]
   );
 
   if (result.affectedRows > 0) {
     const [updatedRecord] = await MySQLDatabase.getPool().query<
       RowDataPacket[]
-    >(`SELECT * FROM ${table} WHERE id = ?`, [id]);
+    >(`SELECT * FROM ${table} WHERE ${idField} = ?`, [id]);
 
     return updatedRecord[0];
   }

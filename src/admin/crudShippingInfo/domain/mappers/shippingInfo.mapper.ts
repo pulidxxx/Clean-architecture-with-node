@@ -2,7 +2,7 @@ import { CustomError } from "../../../../shared/domain/services/custom.error";
 import { ShippingInfoEntity } from "../models/shippingInfo.model";
 
 export class ShippingInfoMapper {
-  static shippinginfoEntityFromObject(object: {
+  static shippinginfosEntityFromObject(object: {
     [key: string]: any;
   }): ShippingInfoEntity {
     const {

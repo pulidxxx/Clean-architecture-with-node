@@ -29,7 +29,7 @@ export class CrudRolesMySQL {
   }
 
   static async updateByID(id: number, updateData: { [key: string]: any }) {
-    const updatedRole = await updateRecord("rol", id, updateData);
+    const updatedRole = await updateRecord("rol", "id", id, updateData);
     return updatedRole;
   }
 

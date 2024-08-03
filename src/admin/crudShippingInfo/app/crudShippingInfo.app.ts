@@ -5,13 +5,13 @@ import { CrudShippingInfosService } from "../domain/services/crudShippingInfos.s
 export class CrudShippingInfosApp {
   // Create the repository and controller
   controllerShippingInfos = () => {
-    const shippinginfosService = new CrudShippingInfosService();
-    const shippinginfosRepository = new CrudShippingInfosRepository(
-      shippinginfosService
+    const shippinginfossService = new CrudShippingInfosService();
+    const shippinginfossRepository = new CrudShippingInfosRepository(
+      shippinginfossService
     );
-    const shippinginfosController = new CrudShippingInfos(
-      shippinginfosRepository
+    const shippinginfossController = new CrudShippingInfos(
+      shippinginfossRepository
     );
-    return shippinginfosController;
+    return shippinginfossController;
   };
 }

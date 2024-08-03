@@ -3,7 +3,10 @@ import { AuthMiddleware } from "../../src/shared/infra/middleware/auth.middlewar
 import { CrudUsersApp } from "../../src/admin/crudUsers/app/crudUsers.app";
 import { CrudRolesApp } from "../../src/admin/crudRoles/app/crudRoles.app";
 import { CrudMaterialsApp } from "../../src/admin/crudMaterials/app/crudMaterials.app";
-import { CrudShippingInfosApp } from "../../src/admin/crudsShippingInfo/app/crudShippingInfo.app";
+import { CrudShippingInfosApp } from "../../src/admin/crudShippingInfo/app/crudShippingInfo.app";
+import { CrudOrdersApp } from "../../src/admin/crudOrder/app/crudOrder.app";
+import { CrudShirtsApp } from "../../src/admin/crudShirt/app/crudShirt.app";
+import { AuthMiddlewareAdmin } from "../../src/shared/infra/middleware/authAdmin.middleware";
 
 export class AuthRoutes {
   static get routes(): Router {
@@ -15,11 +18,13 @@ export class AuthRoutes {
     const controllerMaterials = new CrudMaterialsApp().controllerMaterials();
     const controllerShippingInfos =
       new CrudShippingInfosApp().controllerShippingInfos();
+    const controllerOrders = new CrudOrdersApp().controllerOrders();
+    const controllerShirts = new CrudShirtsApp().controllerShirts();
 
     // User routes
     router.get(
       "/user/",
-      [AuthMiddleware.validateJWT],
+      [AuthMiddlewareAdmin.validateJWT],
       controllerUsers.getUsers
     );
     router.post("/user/login", controllerUsers.loginUser);
@@ -58,6 +63,18 @@ export class AuthRoutes {
       controllerShippingInfos.deleteShippingInfo
     );
     router.put("/shippingInfo/:id", controllerShippingInfos.updateShippingInfo);
+
+    // Order routes
+    router.get("/order/", controllerOrders.getOrders);
+    router.post("/order/create", controllerOrders.createOrder);
+    router.delete("/order/:numeroPedido", controllerOrders.deleteOrder);
+    router.put("/order/:numeroPedido", controllerOrders.updateOrder);
+
+    // Shirt routes
+    router.get("/shirt/", controllerShirts.getShirts);
+    router.post("/shirt/create", controllerShirts.createShirt);
+    router.delete("/shirt/:id", controllerShirts.deleteShirt);
+    router.put("/shirt/:id", controllerShirts.updateShirt);
 
     return router;
   }

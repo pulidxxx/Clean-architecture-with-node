@@ -26,7 +26,7 @@ export class UpdateShippingInfo implements UpdateShippingInfoUseCase {
     );
 
     if (!updatedShippingInfo) {
-      throw CustomError.notFound("Failed to update shippinginfo");
+      throw CustomError.notFound("Failed to update shippinginfos");
     }
 
     return updatedShippingInfo;
