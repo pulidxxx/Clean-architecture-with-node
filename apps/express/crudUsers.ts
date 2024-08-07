@@ -78,4 +78,64 @@ export class CrudUsers {
       .then((data) => res.json(data))
       .catch((error) => this.handleError(error, res));
   };
+
+  filterUsers = (req: Request, res: Response) => {
+    const filters = req.body;
+
+    CrudUsersMySQL.filterUsers(filters)
+      .then((users) => {
+        if (!users) {
+          return res.status(404).json({ error: "Users not found" });
+        }
+        res.json(users);
+      })
+      .catch((error) => this.handleError(error, res));
+  };
+
+  getAllArtistas = async (req: Request, res: Response) => {
+    try {
+      const artistas = await CrudUsersMySQL.getAllArtistas();
+      if (!artistas) {
+        return res.status(404).json({ error: "No se encontraron artistas" });
+      }
+
+      // Organizar los datos en el formato deseado
+      const response = artistas.reduce((acc: any, item: any) => {
+        const {
+          email,
+          nombreUsuario,
+          idEstampado,
+          nombreEstampado,
+          diseñoEstampado,
+        } = item;
+
+        // Agregar usuario al acumulador si no existe
+        if (!acc[email]) {
+          acc[email] = {
+            nombre: nombreUsuario,
+            email,
+            estampados: [],
+          };
+        }
+
+        // Agregar estampado al usuario correspondiente
+        if (idEstampado) {
+          acc[email].estampados.push({
+            idEstampado,
+            nombreEstampado,
+            diseñoEstampado,
+          });
+        }
+
+        return acc;
+      }, {});
+
+      // Convertir el objeto a un array para la respuesta
+      const responseArray = Object.values(response);
+
+      res.json(responseArray);
+    } catch (error) {
+      this.handleError(error, res);
+    }
+  };
 }

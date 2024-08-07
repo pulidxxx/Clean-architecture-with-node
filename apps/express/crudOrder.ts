@@ -66,4 +66,53 @@ export class CrudOrders {
       .then((data) => res.json(data))
       .catch((error) => this.handleError(error, res));
   };
+
+  getOrderDetails = async (req: Request, res: Response) => {
+    const { numeroPedido } = req.params; // Suponiendo que el número de pedido se pasa como parámetro de URL
+
+    try {
+      const pedidoDetails = await CrudOrdersMySQL.getOrderDetails(
+        parseInt(numeroPedido)
+      );
+      if (!pedidoDetails) {
+        return res.status(404).json({ error: "Pedido no encontrado" });
+      }
+
+      // Organizar los datos en el formato deseado
+      const envio = {
+        barrio: pedidoDetails[0].barrio,
+        ciudad: pedidoDetails[0].ciudad,
+        pais: pedidoDetails[0].pais,
+        codigoPostal: pedidoDetails[0].codigoPostal,
+        direccion: pedidoDetails[0].direccion,
+        telefono: pedidoDetails[0].telefono,
+      };
+
+      const camisas = pedidoDetails.map((item: any) => ({
+        imagen: item.imagen,
+        precio: item.precioCamisa,
+        talla: item.talla,
+        cantidad: item.cantidadCamisa,
+        nombreMaterial: item.nombreMaterial,
+        idEstampado: item.idEstampado,
+      }));
+
+      const response = {
+        numeroPedido: pedidoDetails[0].numeroPedido,
+        estadoPedido: pedidoDetails[0].estadoPedido,
+        fechaPedido: pedidoDetails[0].fechaPedido,
+        fechaEnvio: pedidoDetails[0].fechaEnvio,
+        usuario: {
+          nombre: pedidoDetails[0].nombreUsuario,
+          email: pedidoDetails[0].emailUsuario,
+        },
+        envio,
+        camisas,
+      };
+
+      res.json(response);
+    } catch (error) {
+      this.handleError(error, res);
+    }
+  };
 }

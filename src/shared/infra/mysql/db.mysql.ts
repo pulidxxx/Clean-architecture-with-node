@@ -57,3 +57,18 @@ export async function deleteRecord(
   );
   return result.affectedRows > 0;
 }
+export async function startTransaction() {
+  const connection = await MySQLDatabase.getPool().getConnection();
+  await connection.beginTransaction();
+  return connection;
+}
+
+export async function commitTransaction(connection: any) {
+  await connection.commit();
+  connection.release();
+}
+
+export async function rollbackTransaction(connection: any) {
+  await connection.rollback();
+  connection.release();
+}

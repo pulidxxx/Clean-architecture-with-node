@@ -6,7 +6,7 @@ import { CrudMaterialsApp } from "../../src/admin/crudMaterials/app/crudMaterial
 import { CrudShippingInfosApp } from "../../src/admin/crudShippingInfo/app/crudShippingInfo.app";
 import { CrudOrdersApp } from "../../src/admin/crudOrder/app/crudOrder.app";
 import { CrudShirtsApp } from "../../src/admin/crudShirt/app/crudShirt.app";
-import { AuthMiddlewareAdmin } from "../../src/shared/infra/middleware/authAdmin.middleware";
+import { AuthRoleMiddleware } from "../../src/shared/infra/middleware/authRole.middleware";
 
 export class AuthRoutes {
   static get routes(): Router {
@@ -22,23 +22,21 @@ export class AuthRoutes {
     const controllerShirts = new CrudShirtsApp().controllerShirts();
 
     // User routes
-    router.get(
-      "/user/",
-      [AuthMiddlewareAdmin.validateJWT],
-      controllerUsers.getUsers
-    );
+    router.get("/user/", controllerUsers.getUsers);
     router.post("/user/login", controllerUsers.loginUser);
     router.post("/user/register", controllerUsers.registerUser);
     router.delete(
       "/user/:email",
-      [AuthMiddleware.validateJWT],
+      [AuthRoleMiddleware.validateJWT("Administrador")],
       controllerUsers.deleteUser
     );
     router.put(
       "/user/:oldEmail",
-      [AuthMiddleware.validateJWT],
+      [AuthRoleMiddleware.validateJWT("Administrador")],
       controllerUsers.updateUser
     );
+    router.get("/usersFiltered/", controllerUsers.filterUsers);
+    router.get("/artists/", controllerUsers.getAllArtistas);
 
     // Role routes
     router.get("/role/", controllerRoles.getRoles);
@@ -66,6 +64,7 @@ export class AuthRoutes {
 
     // Order routes
     router.get("/order/", controllerOrders.getOrders);
+    router.get("/orderDetails/:numeroPedido", controllerOrders.getOrderDetails);
     router.post("/order/create", controllerOrders.createOrder);
     router.delete("/order/:numeroPedido", controllerOrders.deleteOrder);
     router.put("/order/:numeroPedido", controllerOrders.updateOrder);

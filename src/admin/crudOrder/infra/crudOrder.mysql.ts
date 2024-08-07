@@ -56,4 +56,43 @@ export class CrudOrdersMySQL {
     );
     return lastOrder[0];
   }
+
+  static async getOrderDetails(numeroPedido: number): Promise<any> {
+    const query = `
+    SELECT 
+      p.numeroPedido,
+      p.valor AS valorPedido,
+      p.estado AS estadoPedido,
+      p.fechaPedido,
+      p.fechaEnvio,
+      u.nombre AS nombreUsuario,
+      u.email AS emailUsuario,
+      ie.barrio,
+      ie.ciudad,
+      ie.pais,
+      ie.codigoPostal,
+      ie.direccion,
+      ie.telefono,
+      c.imagen,
+      c.precio AS precioCamisa,
+      c.talla,
+      c.cantidad AS cantidadCamisa,
+      c.nombreMaterial,
+      c.idEstampado
+    FROM 
+      pedido p
+    JOIN 
+      usuario u ON p.usuarioEmail = u.email
+    JOIN 
+      informacion_envio ie ON p.informacionEnvioId = ie.id
+    JOIN 
+      camisa c ON p.numeroPedido = c.numeroPedido
+    WHERE 
+      p.numeroPedido = ?;
+  `;
+
+    const values = [numeroPedido];
+
+    return await executeQuery(query, values);
+  }
 }
