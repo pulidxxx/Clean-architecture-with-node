@@ -1,0 +1,300 @@
+[ // Usuarios
+  {
+    "nombre": "Juan Pérez",
+    "email": "juan.perez@example.com",
+    "password": "password1",
+    "rolId": 1
+  },
+  {
+    "nombre": "Ana Gómez",
+    "email": "ana.gomez@example.com",
+    "password": "password2",
+    "rolId": 2
+  },
+  {
+    "nombre": "Carlos Martínez",
+    "email": "carlos.martinez@example.com",
+    "password": "password3",
+    "rolId": 3
+  },
+  {
+    "nombre": "Lucía Fernández",
+    "email": "lucia.fernandez@example.com",
+    "password": "password4",
+    "rolId": 1
+  },
+  {
+    "nombre": "Pedro Sánchez",
+    "email": "pedro.sanchez@example.com",
+    "password": "password5",
+    "rolId": 2
+  },
+  {
+    "nombre": "María López",
+    "email": "maria.lopez@example.com",
+    "password": "password6",
+    "rolId": 3
+  },
+  {
+    "nombre": "José Hernández",
+    "email": "jose.hernandez@example.com",
+    "password": "password7",
+    "rolId": 1
+  },
+  {
+    "nombre": "Laura Torres",
+    "email": "laura.torres@example.com",
+    "password": "password8",
+    "rolId": 2
+  },
+  {
+    "nombre": "Manuel Díaz",
+    "email": "manuel.diaz@example.com",
+    "password": "password9",
+    "rolId": 3
+  },
+  {
+    "nombre": "Elena Ruiz",
+    "email": "elena.ruiz@example.com",
+    "password": "password10",
+    "rolId": 1
+  },
+  {
+    "nombre": "Roberto Castillo",
+    "email": "roberto.castillo@example.com",
+    "password": "password11",
+    "rolId": 2
+  },
+  {
+    "nombre": "Marta Vargas",
+    "email": "marta.vargas@example.com",
+    "password": "password12",
+    "rolId": 3
+  },
+  {
+    "nombre": "Alberto Ramos",
+    "email": "alberto.ramos@example.com",
+    "password": "password13",
+    "rolId": 1
+  },
+  {
+    "nombre": "Carmen Morales",
+    "email": "carmen.morales@example.com",
+    "password": "password14",
+    "rolId": 2
+  },
+  {
+    "nombre": "Raúl Herrera",
+    "email": "raul.herrera@example.com",
+    "password": "password15",
+    "rolId": 3
+  },
+  {
+    "nombre": "Sofía Muñoz",
+    "email": "sofia.munoz@example.com",
+    "password": "password16",
+    "rolId": 1
+  },
+  {
+    "nombre": "Miguel Rojas",
+    "email": "miguel.rojas@example.com",
+    "password": "password17",
+    "rolId": 2
+  },
+  {
+    "nombre": "Isabel Romero",
+    "email": "isabel.romero@example.com",
+    "password": "password18",
+    "rolId": 3
+  },
+  {
+    "nombre": "Pablo García",
+    "email": "pablo.garcia@example.com",
+    "password": "password19",
+    "rolId": 1
+  },
+  {
+    "nombre": "Clara Jiménez",
+    "email": "clara.jimenez@example.com",
+    "password": "password20",
+    "rolId": 2
+  },
+  {
+    "nombre": "Andrés Molina",
+    "email": "andres.molina@example.com",
+    "password": "password21",
+    "rolId": 3
+  },
+  {
+    "nombre": "Gloria Navarro",
+    "email": "gloria.navarro@example.com",
+    "password": "password22",
+    "rolId": 1
+  },
+  {
+    "nombre": "Luis Ortiz",
+    "email": "luis.ortiz@example.com",
+    "password": "password23",
+    "rolId": 2
+  },
+  {
+    "nombre": "Alicia Cabrera",
+    "email": "alicia.cabrera@example.com",
+    "password": "password24",
+    "rolId": 3
+  },
+  {
+    "nombre": "Jorge Flores",
+    "email": "jorge.flores@example.com",
+    "password": "password25",
+    "rolId": 1
+  },
+  {
+    "nombre": "Beatriz Campos",
+    "email": "beatriz.campos@example.com",
+    "password": "password26",
+    "rolId": 2
+  },
+  {
+    "nombre": "Ricardo León",
+    "email": "ricardo.leon@example.com",
+    "password": "password27",
+    "rolId": 3
+  },
+  {
+    "nombre": "Natalia Castro",
+    "email": "natalia.castro@example.com",
+    "password": "password28",
+    "rolId": 1
+  },
+  {
+    "nombre": "Hugo Soto",
+    "email": "hugo.soto@example.com",
+    "password": "password29",
+    "rolId": 2
+  },
+  {
+    "nombre": "Silvia Delgado",
+    "email": "silvia.delgado@example.com",
+    "password": "password30",
+    "rolId": 3
+  }
+]
+
+
+
+// Material
+
+INSERT INTO material (nombre, cantidad) VALUES ('Algodón', 100);
+INSERT INTO material (nombre, cantidad) VALUES ('Poliéster', 250);
+INSERT INTO material (nombre, cantidad) VALUES ('Seda', 300);
+INSERT INTO material (nombre, cantidad) VALUES ('Lino', 150);
+INSERT INTO material (nombre, cantidad) VALUES ('Lana', 200);
+INSERT INTO material (nombre, cantidad) VALUES ('Nylon', 120);
+
+
+// Camisetas
+
+INSERT INTO camisetas (diseño, nombre, tipo, precio, usuarioEmail)
+VALUES 
+    ('Diseño abstracto en tonos azules', 'Camiseta Azul', 'Deporte', 200000, 'ana.gomez@example.com'),
+    ('Estampado floral colorido', 'Camiseta Floral', 'Casual', 250000, 'ana.gomez@example.com'),
+    ('Diseño geométrico blanco y negro', 'Camiseta Geométrica', 'Deporte', 220000, 'ana.gomez@example.com'),
+    ('Patrón de rayas verticales', 'Camiseta Rayada', 'Formal', 230000, 'beatriz.campos@example.com'),
+    ('Estilo vintage con logo retro', 'Camiseta Vintage', 'Casual', 210000, 'beatriz.campos@example.com'),
+    ('Diseño moderno minimalista', 'Camiseta Minimalista', 'Deporte', 240000, 'beatriz.campos@example.com'),
+    ('Estampado de animales salvajes', 'Camiseta Salvaje', 'Casual', 260000, 'carmen.morales@example.com'),
+    ('Diseño gráfico urbano', 'Camiseta Urbana', 'Deporte', 270000, 'carmen.morales@example.com'),
+	('Diseño con patrones tribales en rojo', 'Camiseta Tribal', 'Casual', 280, 'clara.jimenez@example.com'),
+    ('Estampado gráfico de animales', 'Camiseta Animal Print', 'Casual', 290, 'clara.jimenez@example.com'),
+    ('Diseño con arte urbano en colores vivos', 'Camiseta Arte Urbano', 'Deporte', 300, 'clara.jimenez@example.com'),
+    ('Patrón retro con colores pastel', 'Camiseta Retro Pastel', 'Casual', 310, 'hugo.soto@example.com'),
+    ('Diseño de mandalas en tonos tierra', 'Camiseta Mandala', 'Casual', 320, 'hugo.soto@example.com'),
+    ('Estilo deportivo con franjas laterales', 'Camiseta Deportiva', 'Deporte', 330, 'hugo.soto@example.com'),
+    ('Diseño gráfico inspirador', 'Camiseta Inspiradora', 'Casual', 340, 'laura.torres@example.com'),
+    ('Estampado de mapas antiguos', 'Camiseta Mapa', 'Casual', 350, 'laura.torres@example.com'),
+    ('Diseño con ilustraciones de cómics', 'Camiseta Cómic', 'Deporte', 360, 'laura.torres@example.com'),
+    ('Estilo minimalista con pequeños detalles', 'Camiseta Minimalista Detalle', 'Casual', 370, 'luis.ortiz@example.com');
+
+
+
+// Estampados
+
+INSERT INTO estampado (diseño, nombre, categoria, usuarioEmail)
+VALUES 
+    ('Diseño abstracto en tonos', 'Estampado Abstracto', 'Arte', 'roberto.castillo@example.com'),
+    ('Estampado de flores tropicales', 'Estampado Tropical', 'Naturaleza', 'roberto.castillo@example.com'),
+    ('Diseño geométrico en blanco y negro', 'Estampado Geométrico', 'Moderno', 'roberto.castillo@example.com'),
+    ('Patrón de rayas horizontales multicolores', 'Estampado Rayas', 'Casual', 'pedro.sanchez@example.com'),
+    ('Diseño retro con logo vintage', 'Estampado Retro', 'Vintage', 'pedro.sanchez@example.com'),
+    ('Ilustración de paisaje montañoso', 'Estampado Montaña', 'Paisaje', 'pedro.sanchez@example.com'),
+    ('Diseño de animales salvajes en la selva', 'Estampado ', 'Fauna', 'luis.ortiz@example.com'),
+    ('Estampado gráfico con arte de cómic', 'Estampado Cómic', 'Cómic', 'luis.ortiz@example.com'),
+    ('Diseño minimalista con formas', 'Estampado', 'Abstracto', 'luis.ortiz@example.com'),
+    ('Estampado con patrones étnicos coloridos', 'Estampado Étnico', 'Étnico', 'luis.ortiz@example.com'),
+     ('Diseño de galaxias en colores brillantes', 'Estampado Galaxia', 'Espacial', 'luis.ortiz@example.com'),
+    ('Patrón de animales marinos en tonos azules', 'Estampado Marino', 'Fauna', 'laura.torres@example.com'),
+    ('Diseño con arte gráfico en estilo pop art', 'Estampado Pop Art', 'Arte', 'laura.torres@example.com'),
+    ('Ilustración de ciudades futuristas', 'Estampado Futurista', 'Urbano', 'laura.torres@example.com'),
+    ('Estampado con símbolos geométricos coloridos', 'Estampado Símbolos', 'Moderno', 'laura.torres@example.com'),
+    ('Diseño de vegetación exótica y flores', 'Estampado Exótico', 'Naturaleza', 'juan.perez@example.com'),
+    ('Diseño gráfico inspirado en el arte ', 'Estampado Clásico', 'Arte', 'juan.perez@example.com'),
+    ('Estampado con gráficos de estilo  ', 'Estampado Retro', 'Vintage', 'juan.perez@example.com'),
+    ('Diseño con patrones de rayas diagonales', 'Estampado Rayas', 'Moderno', 'hugo.soto@example.com'),
+    ('Patrón de animales en la selva tropical', 'Estampado Selva', 'Fauna', 'hugo.soto@example.com');
+
+// Informacion de envio
+
+INSERT INTO informacion_envio (barrio, ciudad, pais, codigoPostal, direccion, telefono, usuarioEmail) VALUES
+('Centro', 'Ciudad de México', 'México', '01000', 'Av. Reforma 123', '555-1234', 'sofia.munoz@example.com'),
+('Centro', 'Madrid', 'España', '28001', 'Calle Gran Vía 1', '911-234-567', 'alberto.ramos@example.com'),
+('Centro', 'Buenos Aires', 'Argentina', '1001', 'Av. 9 de Julio 456', '011-1234-5678', 'elena.ruiz@example.com'),
+('Centro', 'Bogotá', 'Colombia', '110111', 'Carrera 7 #45-67', '320-123-4567', 'gloria.navarro@example.com'),
+('Centro', 'Santiago', 'Chile', '8320000', 'Avenida Libertador 789', '02-123-4567', 'jose.hernandez@example.com'),
+('Centro', 'Lima', 'Perú', '15001', 'Jr. de la Unión 234', '01-234-5678', 'juan.perez@example.com'),
+('Centro', 'Quito', 'Ecuador', '170101', 'Av. Amazonas 345', '02-345-6789', 'lucia.fernandez@example.com'),
+('Centro', 'Asunción', 'Paraguay', '1200', 'Av. Carlos Antonio López 678', '021-234-567', 'natalia.castro@example.com'),
+('Centro', 'Asunción', 'Paraguay', '1200', 'Av. Carlos Antonio López 678', '021-234-567', 'natalia.castro@example.com'),
+('Centro', 'Medellín', 'Colombia', '050001', 'Calle 10 #45-67', '4-123-4567', 'pablo.garcia@example.com');
+
+
+// Pedidos 
+
+INSERT INTO pedido (valor, estado, fechaPedido, fechaEnvio, usuarioEmail, informacionEnvioId) VALUES
+(150.00, 'Enviado', '2024-07-15', '2024-07-18', 'sofia.munoz@example.com', 1),
+(200.00, 'En preparación', '2024-07-16', '2024-07-20', 'alberto.ramos@example.com', 2),
+(120.00, 'Entregado', '2024-07-17', '2024-07-22', 'elena.ruiz@example.com', 3),
+(180.00, 'Enviado', '2024-07-18', '2024-07-24', 'gloria.navarro@example.com', 4),
+(250.00, 'En preparación', '2024-07-19', '2024-07-25', 'jose.hernandez@example.com', 5),
+(300.00, 'Entregado', '2024-07-20', '2024-07-26', 'juan.perez@example.com', 6),
+(140.00, 'Enviado', '2024-07-21', '2024-07-27', 'lucia.fernandez@example.com', 7),
+(220.00, 'En preparación', '2024-07-22', '2024-07-28', 'natalia.castro@example.com', 8),
+(220.00, 'En preparación', '2024-07-22', '2024-07-28', 'natalia.castro@example.com', 9),
+(170.00, 'Entregado', '2024-07-23', '2024-07-30', 'pablo.garcia@example.com', 10);
+
+// Camisa
+
+INSERT INTO camisa (imagen, precio, talla, cantidad, nombreMaterial, idEstampado, numeroPedido) VALUES
+('camisa1.jpg', 25.00, 'M', 10, 'Algodón', NULL, 1),
+('camisa2.jpg', 30.00, 'L', 15, 'Lana', 1, 1),
+('camisa3.jpg', 20.00, 'S', 5, 'Lino', NULL, 2),
+('camisa4.jpg', 28.00, 'M', 12, 'Nylon', 2, 2),
+('camisa5.jpg', 35.00, 'L', 8, 'Poliéster', NULL, 3),
+('camisa6.jpg', 22.00, 'S', 20, 'Seda', 3, 3),
+('camisa7.jpg', 27.00, 'M', 7, 'Algodón', NULL, 4),
+('camisa8.jpg', 33.00, 'L', 10, 'Lana', 4, 4),
+('camisa9.jpg', 24.00, 'S', 5, 'Nylon', NULL, 5),
+('camisa10.jpg', 29.00, 'M', 9, 'Poliéster', 5, 5),
+('camisa11.jpg', 26.00, 'L', 12, 'Seda', NULL, 6),
+('camisa12.jpg', 21.00, 'M', 6, 'Algodón', 6, 6),
+('camisa13.jpg', 32.00, 'S', 7, 'Lana', NULL, 7),
+('camisa14.jpg', 23.00, 'M', 11, 'Lino', 7, 7),
+('camisa15.jpg', 28.00, 'L', 8, 'Nylon', NULL, 8),
+('camisa16.jpg', 31.00, 'S', 15, 'Poliéster', 8, 8),
+('camisa17.jpg', 25.00, 'M', 13, 'Seda', NULL, 9),
+('camisa18.jpg', 29.00, 'L', 10, 'Algodón', 9, 9),
+('camisa19.jpg', 30.00, 'S', 5, 'Lana', NULL, 10),
+('camisa20.jpg', 27.00, 'M', 8, 'Lino', 10, 10);
+
+
+
