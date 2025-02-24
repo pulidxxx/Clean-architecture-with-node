@@ -1,199 +1,54 @@
-[ // Usuarios
-  {
-    "nombre": "Juan Pérez",
-    "email": "juan.perez@example.com",
-    "password": "password1",
-    "rolId": 1
-  },
-  {
-    "nombre": "Ana Gómez",
-    "email": "ana.gomez@example.com",
-    "password": "password2",
-    "rolId": 2
-  },
-  {
-    "nombre": "Carlos Martínez",
-    "email": "carlos.martinez@example.com",
-    "password": "password3",
-    "rolId": 3
-  },
-  {
-    "nombre": "Lucía Fernández",
-    "email": "lucia.fernandez@example.com",
-    "password": "password4",
-    "rolId": 1
-  },
-  {
-    "nombre": "Pedro Sánchez",
-    "email": "pedro.sanchez@example.com",
-    "password": "password5",
-    "rolId": 2
-  },
-  {
-    "nombre": "María López",
-    "email": "maria.lopez@example.com",
-    "password": "password6",
-    "rolId": 3
-  },
-  {
-    "nombre": "José Hernández",
-    "email": "jose.hernandez@example.com",
-    "password": "password7",
-    "rolId": 1
-  },
-  {
-    "nombre": "Laura Torres",
-    "email": "laura.torres@example.com",
-    "password": "password8",
-    "rolId": 2
-  },
-  {
-    "nombre": "Manuel Díaz",
-    "email": "manuel.diaz@example.com",
-    "password": "password9",
-    "rolId": 3
-  },
-  {
-    "nombre": "Elena Ruiz",
-    "email": "elena.ruiz@example.com",
-    "password": "password10",
-    "rolId": 1
-  },
-  {
-    "nombre": "Roberto Castillo",
-    "email": "roberto.castillo@example.com",
-    "password": "password11",
-    "rolId": 2
-  },
-  {
-    "nombre": "Marta Vargas",
-    "email": "marta.vargas@example.com",
-    "password": "password12",
-    "rolId": 3
-  },
-  {
-    "nombre": "Alberto Ramos",
-    "email": "alberto.ramos@example.com",
-    "password": "password13",
-    "rolId": 1
-  },
-  {
-    "nombre": "Carmen Morales",
-    "email": "carmen.morales@example.com",
-    "password": "password14",
-    "rolId": 2
-  },
-  {
-    "nombre": "Raúl Herrera",
-    "email": "raul.herrera@example.com",
-    "password": "password15",
-    "rolId": 3
-  },
-  {
-    "nombre": "Sofía Muñoz",
-    "email": "sofia.munoz@example.com",
-    "password": "password16",
-    "rolId": 1
-  },
-  {
-    "nombre": "Miguel Rojas",
-    "email": "miguel.rojas@example.com",
-    "password": "password17",
-    "rolId": 2
-  },
-  {
-    "nombre": "Isabel Romero",
-    "email": "isabel.romero@example.com",
-    "password": "password18",
-    "rolId": 3
-  },
-  {
-    "nombre": "Pablo García",
-    "email": "pablo.garcia@example.com",
-    "password": "password19",
-    "rolId": 1
-  },
-  {
-    "nombre": "Clara Jiménez",
-    "email": "clara.jimenez@example.com",
-    "password": "password20",
-    "rolId": 2
-  },
-  {
-    "nombre": "Andrés Molina",
-    "email": "andres.molina@example.com",
-    "password": "password21",
-    "rolId": 3
-  },
-  {
-    "nombre": "Gloria Navarro",
-    "email": "gloria.navarro@example.com",
-    "password": "password22",
-    "rolId": 1
-  },
-  {
-    "nombre": "Luis Ortiz",
-    "email": "luis.ortiz@example.com",
-    "password": "password23",
-    "rolId": 2
-  },
-  {
-    "nombre": "Alicia Cabrera",
-    "email": "alicia.cabrera@example.com",
-    "password": "password24",
-    "rolId": 3
-  },
-  {
-    "nombre": "Jorge Flores",
-    "email": "jorge.flores@example.com",
-    "password": "password25",
-    "rolId": 1
-  },
-  {
-    "nombre": "Beatriz Campos",
-    "email": "beatriz.campos@example.com",
-    "password": "password26",
-    "rolId": 2
-  },
-  {
-    "nombre": "Ricardo León",
-    "email": "ricardo.leon@example.com",
-    "password": "password27",
-    "rolId": 3
-  },
-  {
-    "nombre": "Natalia Castro",
-    "email": "natalia.castro@example.com",
-    "password": "password28",
-    "rolId": 1
-  },
-  {
-    "nombre": "Hugo Soto",
-    "email": "hugo.soto@example.com",
-    "password": "password29",
-    "rolId": 2
-  },
-  {
-    "nombre": "Silvia Delgado",
-    "email": "silvia.delgado@example.com",
-    "password": "password30",
-    "rolId": 3
-  }
-]
+-- Roles
+INSERT INTO rol (id, nombre) VALUES 
+(1, 'Cliente'),
+(2, 'Artista'),
+(3, 'Administrador');
 
-
+-- Usuarios 
+INSERT INTO usuario (nombre, email, password, rolId) VALUES
+('Juan Pérez', 'juan.perez@example.com', 'password1', 1),
+('Ana Gómez', 'ana.gomez@example.com', 'password2', 2),
+('Carlos Martínez', 'carlos.martinez@example.com', 'password3', 3),
+('Lucía Fernández', 'lucia.fernandez@example.com', 'password4', 1),
+('Pedro Sánchez', 'pedro.sanchez@example.com', 'password5', 2),
+('María López', 'maria.lopez@example.com', 'password6', 3),
+('José Hernández', 'jose.hernandez@example.com', 'password7', 1),
+('Laura Torres', 'laura.torres@example.com', 'password8', 2),
+('Manuel Díaz', 'manuel.diaz@example.com', 'password9', 3),
+('Elena Ruiz', 'elena.ruiz@example.com', 'password10', 1),
+('Roberto Castillo', 'roberto.castillo@example.com', 'password11', 2),
+('Marta Vargas', 'marta.vargas@example.com', 'password12', 3),
+('Alberto Ramos', 'alberto.ramos@example.com', 'password13', 1),
+('Carmen Morales', 'carmen.morales@example.com', 'password14', 2),
+('Raúl Herrera', 'raul.herrera@example.com', 'password15', 3),
+('Sofía Muñoz', 'sofia.munoz@example.com', 'password16', 1),
+('Miguel Rojas', 'miguel.rojas@example.com', 'password17', 2),
+('Isabel Romero', 'isabel.romero@example.com', 'password18', 3),
+('Pablo García', 'pablo.garcia@example.com', 'password19', 1),
+('Clara Jiménez', 'clara.jimenez@example.com', 'password20', 2),
+('Andrés Molina', 'andres.molina@example.com', 'password21', 3),
+('Gloria Navarro', 'gloria.navarro@example.com', 'password22', 1),
+('Luis Ortiz', 'luis.ortiz@example.com', 'password23', 2),
+('Alicia Cabrera', 'alicia.cabrera@example.com', 'password24', 3),
+('Jorge Flores', 'jorge.flores@example.com', 'password25', 1),
+('Beatriz Campos', 'beatriz.campos@example.com', 'password26', 2),
+('Ricardo León', 'ricardo.leon@example.com', 'password27', 3),
+('Natalia Castro', 'natalia.castro@example.com', 'password28', 1),
+('Hugo Soto', 'hugo.soto@example.com', 'password29', 2),
+('Silvia Delgado', 'silvia.delgado@example.com', 'password30', 3);
 
 // Material
 
-INSERT INTO material (nombre, cantidad) VALUES ('Algodón', 100);
-INSERT INTO material (nombre, cantidad) VALUES ('Poliéster', 250);
-INSERT INTO material (nombre, cantidad) VALUES ('Seda', 300);
-INSERT INTO material (nombre, cantidad) VALUES ('Lino', 150);
-INSERT INTO material (nombre, cantidad) VALUES ('Lana', 200);
-INSERT INTO material (nombre, cantidad) VALUES ('Nylon', 120);
+INSERT INTO material (nombre, cantidad) VALUES
+('Algodón', 100),
+('Poliéster', 250),
+('Seda', 300),
+('Lino', 150),
+('Lana', 200),
+('Nylon', 120);
 
 
-// Camisetas
+-- Camisetas
 
 INSERT INTO camisetas (diseño, nombre, tipo, precio, usuarioEmail)
 VALUES 
@@ -218,7 +73,7 @@ VALUES
 
 
 
-// Estampados
+-- Estampados
 
 INSERT INTO estampado (diseño, nombre, categoria, usuarioEmail)
 VALUES 
@@ -243,7 +98,7 @@ VALUES
     ('Diseño con patrones de rayas diagonales', 'Estampado Rayas', 'Moderno', 'hugo.soto@example.com'),
     ('Patrón de animales en la selva tropical', 'Estampado Selva', 'Fauna', 'hugo.soto@example.com');
 
-// Informacion de envio
+-- Informacion de envio
 
 INSERT INTO informacion_envio (barrio, ciudad, pais, codigoPostal, direccion, telefono, usuarioEmail) VALUES
 ('Centro', 'Ciudad de México', 'México', '01000', 'Av. Reforma 123', '555-1234', 'sofia.munoz@example.com'),
@@ -258,7 +113,7 @@ INSERT INTO informacion_envio (barrio, ciudad, pais, codigoPostal, direccion, te
 ('Centro', 'Medellín', 'Colombia', '050001', 'Calle 10 #45-67', '4-123-4567', 'pablo.garcia@example.com');
 
 
-// Pedidos 
+-- Pedidos 
 
 INSERT INTO pedido (valor, estado, fechaPedido, fechaEnvio, usuarioEmail, informacionEnvioId) VALUES
 (150.00, 'Enviado', '2024-07-15', '2024-07-18', 'sofia.munoz@example.com', 1),
@@ -272,7 +127,7 @@ INSERT INTO pedido (valor, estado, fechaPedido, fechaEnvio, usuarioEmail, inform
 (220.00, 'En preparación', '2024-07-22', '2024-07-28', 'natalia.castro@example.com', 9),
 (170.00, 'Entregado', '2024-07-23', '2024-07-30', 'pablo.garcia@example.com', 10);
 
-// Camisa
+-- Camisa
 
 INSERT INTO camisa (imagen, precio, talla, cantidad, nombreMaterial, idEstampado, numeroPedido) VALUES
 ('camisa1.jpg', 25.00, 'M', 10, 'Algodón', NULL, 1),
