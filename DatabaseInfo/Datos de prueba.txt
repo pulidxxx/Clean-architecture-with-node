@@ -37,7 +37,7 @@ INSERT INTO usuario (nombre, email, password, rolId) VALUES
 ('Hugo Soto', 'hugo.soto@example.com', 'password29', 2),
 ('Silvia Delgado', 'silvia.delgado@example.com', 'password30', 3);
 
-// Material
+-- Material
 
 INSERT INTO material (nombre, cantidad) VALUES
 ('Algodón', 100),

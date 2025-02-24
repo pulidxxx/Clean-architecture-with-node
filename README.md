@@ -25,7 +25,7 @@ docker-compose up -d
 npm run dev
 ```
 
-9. Deberia poder obtener los roles desde postman si se realizo bien la configuracion, para eliminar y editar usuarios hay que registrarse antes
+9. Deberia poder obtener los roles desde postman si se realizo bien la configuracion, para eliminar y editar usuarios hay que registrarse y loguearse antes con las respectivas queries de postman
 
 Ciclo de vida de la aplicacion:
 
